@@ -55,7 +55,6 @@ public class CalculatorWindow {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Clear");
                 numberOutput.setText("");
                 operations.setOperation("");
             }
@@ -63,7 +62,6 @@ public class CalculatorWindow {
         zeroButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("0");
                 if (numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
                     numberOutput.setText("0");
                 }
@@ -75,7 +73,6 @@ public class CalculatorWindow {
         oneButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("1");
                 if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
                     numberOutput.setText("1");
                 }
@@ -177,6 +174,21 @@ public class CalculatorWindow {
                 }
                 else {
                     numberOutput.append("9");
+                }
+            }
+        });
+
+        decimalPointButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().isEmpty()||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("0");
+                }
+                if(numberOutput.getText().contains(".")){
+
+                }
+                else {
+                    numberOutput.append(".");
                 }
             }
         });
