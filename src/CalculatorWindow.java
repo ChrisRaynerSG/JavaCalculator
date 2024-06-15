@@ -1,8 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
-public class CalculatorWindow{
-    CalculatorWindow(){
+public class CalculatorWindow {
+    public CalculatorWindow(){
         JFrame calculatorWindow = new JFrame("Calculator");
         calculatorWindow.setSize(300,400);
         calculatorWindow.setResizable(false);
@@ -11,6 +14,9 @@ public class CalculatorWindow{
         JPanel middleNumberGridPanel = new JPanel();
         JPanel equalsButtonPanel = new JPanel();
         JTextArea numberOutput = new JTextArea();
+        Font numberFont = new Font("Calibri", Font.BOLD, 24);
+        numberOutput.setFont(numberFont);
+        numberOutput.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         numberOutput.setPreferredSize(new Dimension(300,60));
         GridLayout middleNumberGrid = new GridLayout(4,4);
         middleNumberGridPanel.setLayout(middleNumberGrid);
@@ -35,6 +41,204 @@ public class CalculatorWindow{
 
         equalsButton.setPreferredSize(new Dimension(300,40));
 
+        Operations operations = new Operations();
+
+        //Action Listeners for calculator buttons
+
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Clear");
+                numberOutput.setText("");
+                operations.setOperation("");
+            }
+        });
+        zeroButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("0");
+                if (numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("0");
+                }
+                else {
+                    numberOutput.append("0");
+                }
+            }
+        });
+        oneButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("1");
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("1");
+                }
+                else {
+                    numberOutput.append("1");
+                }
+            }
+        });
+
+        twoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("2");
+                }
+                else {
+                    numberOutput.append("2");
+                }
+            }
+        });
+
+        threeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("3");
+                }
+                else {
+                    numberOutput.append("3");
+                }
+            }
+        });
+
+        fourButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("4");
+                }
+                else {
+                    numberOutput.append("4");
+                }
+            }
+        });
+
+        fiveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("5");
+                }
+                else {
+                    numberOutput.append("5");
+                }
+            }
+        });
+
+        sixButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("6");
+                }
+                else {
+                    numberOutput.append("6");
+                }
+            }
+        });
+
+        sevenButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("7");
+                }
+                else {
+                    numberOutput.append("7");
+                }
+            }
+        });
+
+        eightButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("8");
+                }
+                else {
+                    numberOutput.append("8");
+                }
+            }
+        });
+
+        nineButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("0")||numberOutput.getText().equals(operations.calculatedNumbertoString)){
+                    numberOutput.setText("9");
+                }
+                else {
+                    numberOutput.append("9");
+                }
+            }
+        });
+
+        equalsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(operations.operation.isEmpty()){
+
+                }
+                else {
+                    String number2 = numberOutput.getText();
+                    numberOutput.setText("");
+                    numberOutput.setText(operations.equals(number2));
+                }
+            }
+        });
+
+        plusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("")){
+
+                }
+                else {
+                    operations.add(numberOutput.getText());
+                    numberOutput.setText("");
+                }
+            }
+        });
+
+        minusButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("")){
+
+                }
+                else {
+                    operations.subtract(numberOutput.getText());
+                    numberOutput.setText("");
+                }
+            }
+        });
+
+        multiplyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("")){
+
+                }
+                else {
+                    operations.multiply(numberOutput.getText());
+                    numberOutput.setText("");
+                }
+            }
+        });
+
+        divideButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(numberOutput.getText().equals("")){
+
+                }
+                else {
+                    operations.divide(numberOutput.getText());
+                    numberOutput.setText("");
+                }
+            }
+        });
 
         // Number Output
         // 7 8 9 ÷
@@ -44,6 +248,7 @@ public class CalculatorWindow{
         // =
 
         //Add 4x4 grid buttons to grid layout
+
         middleNumberGridPanel.add(sevenButton);
         middleNumberGridPanel.add(eightButton);
         middleNumberGridPanel.add(nineButton);
@@ -61,33 +266,12 @@ public class CalculatorWindow{
         middleNumberGridPanel.add(decimalPointButton);
         middleNumberGridPanel.add(plusButton);
 
-
-
-
-
-//        middleNumberGrid.addLayoutComponent("0",zeroButton);
-//        middleNumberGrid.addLayoutComponent(".",decimalPointButton);
-//        middleNumberGrid.addLayoutComponent("+",plusButton);
-//        middleNumberGrid.addLayoutComponent("1",oneButton);
-//        middleNumberGrid.addLayoutComponent("2",twoButton);
-//        middleNumberGrid.addLayoutComponent("3",threeButton);
-//        middleNumberGrid.addLayoutComponent("-",minusButton);
-//        middleNumberGrid.addLayoutComponent("4",fourButton);
-//        middleNumberGrid.addLayoutComponent("5",fiveButton);
-//        middleNumberGrid.addLayoutComponent("6",sixButton);
-//        middleNumberGrid.addLayoutComponent("x",multiplyButton);
-//        middleNumberGrid.addLayoutComponent("7",sevenButton);
-//        middleNumberGrid.addLayoutComponent("8",eightButton);
-//        middleNumberGrid.addLayoutComponent("9",nineButton);
-//        middleNumberGrid.addLayoutComponent("÷",divideButton);
+        //create the layout of the window and set it to be visible
 
         equalsButtonPanel.add(equalsButton);
         calculatorWindow.add(numberOutput, BorderLayout.NORTH);
         calculatorWindow.add(middleNumberGridPanel, BorderLayout.CENTER);
         calculatorWindow.add(equalsButton,BorderLayout.SOUTH);
-
         calculatorWindow.setVisible(true);
-
     }
-
 }
