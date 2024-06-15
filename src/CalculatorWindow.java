@@ -2,15 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 public class CalculatorWindow {
+
+    //create the calculator window, set default close operation, size and layout for the window, and create all the components for the window
+
     public CalculatorWindow(){
         JFrame calculatorWindow = new JFrame("Calculator");
         calculatorWindow.setSize(300,400);
         calculatorWindow.setResizable(false);
         calculatorWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
         JPanel middleNumberGridPanel = new JPanel();
         JPanel equalsButtonPanel = new JPanel();
         JTextArea numberOutput = new JTextArea();
@@ -20,6 +21,8 @@ public class CalculatorWindow {
         numberOutput.setPreferredSize(new Dimension(300,60));
         GridLayout middleNumberGrid = new GridLayout(4,4);
         middleNumberGridPanel.setLayout(middleNumberGrid);
+
+        //Create buttons to populate the calculator window
 
         JButton zeroButton = new JButton("0");
         JButton oneButton = new JButton("1");
@@ -39,7 +42,11 @@ public class CalculatorWindow {
         JButton divideButton = new JButton("÷");
         JButton clearButton = new JButton("C");
 
+        // make the equals button occupy the bottom space of the window
+
         equalsButton.setPreferredSize(new Dimension(300,40));
+
+        //instantiate operations to be used by the calculator "+-/*="
 
         Operations operations = new Operations();
 

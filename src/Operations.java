@@ -15,6 +15,10 @@ public class Operations {
         this.operation = operation;
     }
 
+    public String getOperation(){
+        return operation;
+    }
+
     public void add(String num1) {
         this.operation = "add";
         this.num1 = Double.parseDouble(num1);
