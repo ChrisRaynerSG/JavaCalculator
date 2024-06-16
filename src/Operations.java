@@ -39,6 +39,19 @@ public class Operations {
         this.num1 = Double.parseDouble(num1);
     }
 
+    public String square(String num1){
+        if(num1.isEmpty()){
+            return "";
+        }
+        else {
+            this.num1 = Double.parseDouble(num1);
+            calculatedNumber = this.num1*this.num1;
+            calculatedNumbertoString = String.valueOf(calculatedNumber);
+            return calculatedNumbertoString;
+        }
+
+    }
+
     public String equals(String num2) {
         if (operation.equals("add")) {
             operation = "";
